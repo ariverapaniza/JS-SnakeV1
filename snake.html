@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake</title>
+    <title>Snake Game V1</title>
 </head>
 <body>
     <canvas id="gc" width="400" height="400"></canvas>
@@ -13,18 +13,18 @@
         
         window.onload=function() {
             canv=document.getElementById("gc");
-            ctx=canv.getContext("2d");
-            document.addEventListener("keydown",keyPush);
+            ctx=canv.getContext("2d");  // This will tell the canvas is a 2d canvas
+            document.addEventListener("keydown",keyPush);  // this will listen when the arroy keys are pushed down triggering the "keyPush" function
             setInterval(game,1000/15);
         }
-        px=py=10;
-        gs=tc=20;
+        px=py=10;  //  THis is the player position
+        gs=tc=20;  //  grid size ant tile count
         ax=ay=15;
         xv=yv=0;
         trail=[];
         tail = 5;
         function game() {
-            px+=xv;
+            px+=xv;  // THis will control the arrowkeys positions with the x velocity and y velocity
             py+=yv;
             if(px<0) {
                 px= tc-1;
@@ -42,7 +42,7 @@
             ctx.fillRect(0,0,canv.width,canv.height);
          
             ctx.fillStyle="lime";
-            for(var i=0;i<trail.length;i++) {
+            for(var i=0;i<trail.length;i++) {  //  THis will lead the trail and if the tail crashes it will reset the game 
                 ctx.fillRect(trail[i].x*gs,trail[i].y*gs,gs-2,gs-2);
                 if(trail[i].x==px && trail[i].y==py) {
                     tail = 5;
